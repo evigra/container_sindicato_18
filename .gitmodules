@@ -13,3 +13,6 @@
 [submodule "addons/gpsmap_company"]
 	path = addons/gpsmap_company
 	url = git@github.com:evigra/gpsmap_company.git
+[submodule "addons/gpsmap_mirror"]
+	path = addons/gpsmap_mirror
+	url = git@github.com:evigra/gpsmap_mirror.git
