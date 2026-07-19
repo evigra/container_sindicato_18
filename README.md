@@ -14,7 +14,9 @@ git clone --recurse-submodules https://github.com/evigra/container_solesgps.git
 
 git submodule add git@github.com:evigra/gpsmap.git addons/gpsmap
 git submodule add git@github.com:evigra/gpsmap_engine.git addons/gpsmap_engine
+git submodule add git@github.com:evigra/gpsmap_history.git addons/gpsmap_history
 git submodule add git@github.com:evigra/instance_solesgps.git addons/instance_solesgps
+
 
 
 

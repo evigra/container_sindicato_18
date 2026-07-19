@@ -7,3 +7,6 @@
 [submodule "addons/gpsmap_engine"]
 	path = addons/gpsmap_engine
 	url = git@github.com:evigra/gpsmap_engine.git
+[submodule "addons/gpsmap_history"]
+	path = addons/gpsmap_history
+	url = git@github.com:evigra/gpsmap_history.git
