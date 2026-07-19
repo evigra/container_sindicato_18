@@ -10,3 +10,6 @@
 [submodule "addons/gpsmap_history"]
 	path = addons/gpsmap_history
 	url = git@github.com:evigra/gpsmap_history.git
+[submodule "addons/gpsmap_company"]
+	path = addons/gpsmap_company
+	url = git@github.com:evigra/gpsmap_company.git
