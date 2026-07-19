@@ -17,6 +17,7 @@ git submodule add git@github.com:evigra/gpsmap_company.git addons/gpsmap_company
 git submodule add git@github.com:evigra/gpsmap_engine.git addons/gpsmap_engine
 git submodule add git@github.com:evigra/gpsmap_history.git addons/gpsmap_history
 git submodule add git@github.com:evigra/gpsmap_mirror.git addons/gpsmap_mirror
+git submodule add git@github.com:evigra/gpsmap_street.git addons/gpsmap_street
 git submodule add git@github.com:evigra/instance_solesgps.git addons/instance_solesgps
 
 

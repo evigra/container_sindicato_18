@@ -16,3 +16,6 @@
 [submodule "addons/gpsmap_mirror"]
 	path = addons/gpsmap_mirror
 	url = git@github.com:evigra/gpsmap_mirror.git
+[submodule "addons/gpsmap_street"]
+	path = addons/gpsmap_street
+	url = git@github.com:evigra/gpsmap_street.git
