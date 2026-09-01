@@ -1,0 +1,41 @@
+services:
+  # ============================================================
+  # container_odoo_16
+  # ============================================================
+  container_odoo_16:
+    image: odoo:16
+    container_name: container_odoo_16
+    restart: unless-stopped
+
+    environment:
+      HOST: container_postgres_16
+      USER: odoo
+      PASSWORD: odoo
+
+    networks:
+      - postgres_16_network
+
+    volumes:
+      - ~/docker/container_odoo_16/addons:/mnt/extra-addons
+      - ~/docker/container_odoo_16/config:/etc/odoo
+
+    ports:
+      - "8006:8006"
+      - "8016:8069"
+      - "8672:8072"
+    command:
+      - odoo
+      - --db_host=container_postgres_16
+      - --db_port=5432
+      - --db_user=odoo
+      - --db_password=odoo
+      - --gevent-port=8072
+    
+      - --database=container_odoo_16
+      - --update=
+      - --without-demo=all
+
+
+networks:
+  postgres_16_network:
+    external: true
