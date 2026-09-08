@@ -1,4 +1,4 @@
-# container_odoo_16
+# container_sindicato_18
 
 This repository contains the template to generate the containers
 
@@ -8,29 +8,36 @@ This repository contains the template to generate the containers
 
 
 eval "$(ssh-agent -s)"; ssh-add ~/.ssh/e.vizcaino@solesgps.com
-git remote set-url origin git@github.com:evigra/container_odoo_16.git
+git remote set-url origin git@github.com:evigra/container_sindicato_18.git
 
-git clone --recurse-submodules https://github.com/evigra/container_odoo_16.git
+git clone --recurse-submodules https://github.com/evigra/container_sindicato_18.git
 
-git submodule add git@github.com:evigra/instance_odoo.git addons/instance_odoo
+git submodule add git@github.com:evigra/instance_sindicato.git addons/instance_sindicato
 
 
 # DOCKER CONTAINER CONFIGURATIONS
 sudo chown $(whoami):$(whoami) /var/run/docker.sock
 
 
+# Modules 
+docker exec -it container_sindicato_18 bash -c "odoo -d container_sindicato_18 -i instance_sindicato -p 8008 --db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
+
+docker exec -it container_sindicato_18 bash -c "odoo -d container_sindicato_18 -u instance_sindicato -p 8008 --db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
+
+
 # Modules TEST
-docker exec -it container_odoo_16 bash -c "odoo -d container_odoo_16_test -i instance -p 8006--db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
+docker exec -it container_sindicato_18 bash -c "odoo -d container_sindicato_18_test -i instance_sindicato -p 8006--db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
 
 
 # show container in console
-docker exec -it container_odoo_16 /bin/bash
+docker exec -it container_sindicato_18 /bin/bash
 
 
-http://container_odoo_16.localhost:8016
-http://container_odoo_16_test.localhost:8006
+http://container_sindicato_18.localhost:8018
+http://container_sindicato_18_test.localhost:8008
 
 docker stop container_odoo db16
 docker rm container_odoo db16 
 clear
 
+sudo chown evigra:evigra *

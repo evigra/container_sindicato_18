@@ -1,10 +1,10 @@
 services:
   # ============================================================
-  # container_odoo_16
+  # container_sindicato_18
   # ============================================================
-  container_odoo_16:
-    image: odoo:16
-    container_name: container_odoo_16
+  container_sindicato_18:
+    image: odoo:18.0
+    container_name: container_sindicato_18
     restart: unless-stopped
 
     environment:
@@ -16,13 +16,14 @@ services:
       - postgres_16_network
 
     volumes:
-      - ~/docker/container_odoo_16/addons:/mnt/extra-addons
-      - ~/docker/container_odoo_16/config:/etc/odoo
+      - ~/docker/container_sindicato_18/addons:/mnt/extra-addons
+      - ~/docker/container_sindicato_18/config:/etc/odoo
+      
 
     ports:
-      - "8006:8006"
-      - "8016:8069"
-      - "8672:8072"
+      - "8008:8008"
+      - "8018:8069"
+      - "8872:8072"
     command:
       - odoo
       - --db_host=container_postgres_16
@@ -31,8 +32,9 @@ services:
       - --db_password=odoo
       - --gevent-port=8072
     
-      - --database=container_odoo_16
-      - --update=
+      - --database=container_sindicato_18
+      - --init=instance_sindicato
+      - --update=instance_sindicato
       - --without-demo=all
 
 
