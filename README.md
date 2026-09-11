@@ -10,7 +10,7 @@ This repository contains the template to generate the containers
 eval "$(ssh-agent -s)"; ssh-add ~/.ssh/e.vizcaino@solesgps.com
 git remote set-url origin git@github.com:evigra/container_sindicato_18.git
 
-git clone --recurse-submodules https://github.com/evigra/container_sindicato_18.git
+git clone --recurse-submodules git@github.com:evigra/container_sindicato_18.git
 
 git submodule add git@github.com:evigra/instance_sindicato.git addons/instance_sindicato
 
