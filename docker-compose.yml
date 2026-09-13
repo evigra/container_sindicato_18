@@ -32,9 +32,9 @@ services:
       - --db_password=odoo
       - --gevent-port=8072
     
-      - --database=container_sindicato_18
-      - --init=instance_sindicato
-      - --update=instance_sindicato
+      #- --database=container_sindicato_18
+      #- --init=instance_sindicato
+      #- --update=instance_sindicato
       - --without-demo=all
 
 

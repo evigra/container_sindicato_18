@@ -18,6 +18,8 @@ git submodule add git@github.com:evigra/instance_sindicato.git addons/instance_s
 # DOCKER CONTAINER CONFIGURATIONS
 sudo chown $(whoami):$(whoami) /var/run/docker.sock
 
+# Instancia odoo
+docker exec -it container_sindicato_18 bash -c "odoo -p 8008 --db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
 
 # Modules 
 docker exec -it container_sindicato_18 bash -c "odoo -d container_sindicato_18 -i instance_sindicato -p 8008 --db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
