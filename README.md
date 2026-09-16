@@ -43,3 +43,55 @@ docker rm container_odoo db16
 clear
 
 sudo chown evigra:evigra *
+
+
+
+# NGIX
+
+sudo nano /etc/nginx/sites-enabled/default
+
+sudo nginx -t
+
+sudo systemctl restart nginx
+
+sudo certbot --nginx -d sntss-xxv.com -d www.sntss-xxv.com
+
+sudo certbot certificates
+
+sudo systemctl status certbot.timer
+
+sudo certbot renew --dry-run    
+
+server {
+    listen 80;
+    server_name sntss-xxv.com www.sntss-xxv.com;
+
+    proxy_read_timeout 720s;
+    proxy_connect_timeout 720s;
+    proxy_send_timeout 720s;
+
+    location / {
+        proxy_pass http://127.0.0.1:8018;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_redirect off;
+    }
+
+    location /websocket {
+        proxy_pass http://127.0.0.1:8018;
+
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_read_timeout 720s;
+    }
+}
