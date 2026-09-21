@@ -37,7 +37,11 @@ services:
       #- --update=instance_sindicato
       - --without-demo=all
 
-
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 10G
 networks:
   postgres_16_network:
     external: true
