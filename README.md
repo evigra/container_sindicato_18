@@ -56,9 +56,8 @@ docker exec -it container_sindicato_18 bash -c "odoo -d container_sindicato_18_t
 
 
 # show container in console
-docker exec -it container_sindicato_18 /bin/bash
+docker exec -it container_sindicato_18 bash -c "odoo shell -d container_sindicato_18 -p 8008 --db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo"
 
-docker exec -it container_sindicato_18 bash -c "odoo shell -d container_sindicato_18 -u instance_sindicato -p 8008 --db_host=container_postgres_16 --db_port=5432 --db_user=odoo --db_password=odoo  --without-demo=all"
 
 
 http://container_sindicato_18.localhost:8018
