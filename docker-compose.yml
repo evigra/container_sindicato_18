@@ -1,0 +1,47 @@
+services:
+  # ============================================================
+  # container_solesgps
+  # ============================================================
+  container_solesgps:
+    image: odoo:16.0
+    container_name: container_solesgps
+    restart: unless-stopped
+
+    environment:
+      HOST: container_postgres_16
+      USER: odoo
+      PASSWORD: odoo
+
+    networks:
+      - postgres_16_network
+
+    volumes:
+      - ~/docker/container_solesgps/addons:/mnt/extra-addons
+      - ~/docker/container_solesgps/config:/etc/odoo
+      
+
+    ports:
+      - "8006:8006"
+      - "8016:8069"
+      - "8672:8072"
+    command:
+      - odoo
+      - --db_host=container_postgres_16
+      - --db_port=5432
+      - --db_user=odoo
+      - --db_password=odoo
+      - --gevent-port=8672
+    
+      #- --database=container_solesgps
+      #- --init=instance_sindicato
+      #- --update=instance_sindicato
+      - --without-demo=all
+
+    #deploy:
+    #  resources:
+    #    limits:
+    #      cpus: "4"
+    #      memory: 10G
+networks:
+  postgres_16_network:
+    external: true
