@@ -19,3 +19,6 @@
 [submodule "addons/gpsmap_street"]
 	path = addons/gpsmap_street
 	url = git@github.com:evigra/gpsmap_street.git
+[submodule "addons/gpsmap_website"]
+	path = addons/gpsmap_website
+	url = git@github.com:evigra/gpsmap_website.git
